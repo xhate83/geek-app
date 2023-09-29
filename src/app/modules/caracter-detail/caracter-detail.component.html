@@ -1,0 +1,58 @@
+
+<div class="h-full flex flex-col space-y-4">
+
+
+    <div class="flex flex-col space-y-2 sm:flex-row sm:justify-center sm:space-x-2 sm:space-y-0">
+        <button mat-raised-button color="accent"
+        (click)="goToList()">
+            <mat-icon class="mr-2">
+                format_list_bulleted
+            </mat-icon>
+            <span>Go to list</span>
+        </button>
+
+    </div>
+
+    <ng-container *ngIf="!isLoading else loadingState">
+        <div class="grid grid-cols-1 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-max gap-6 w-full justify-center"
+       >
+            <ng-container *ngFor="let caracter of caracters">
+                <div class="w-full sm:w-80 flex flex-col bg-gray-200 rounded-2xl overflow-hidden shadow-lg">
+                 
+                    <img [src]="caracter.image" alt="{{caracter.name}}" class="w-full h-80 object-cover rounded-t-2xl">
+        
+        
+                    <div class="p-4">
+                        <div class="text-purple-900 font-semibold text-2xl mb-2 truncate">{{caracter.name}}</div>
+                        <p class="truncate"><strong class="text-purple-900" >Status:</strong> {{caracter.status | titlecase}}</p>
+                        <p class="truncate"><strong class="text-purple-900">Species:</strong> {{caracter.species | titlecase}}</p>
+                        <p class="truncate"><strong class="text-purple-900">Type:</strong> {{caracter.type ? caracter.type : 'Unknown'}}</p>
+                        <p class="truncate"><strong class="text-purple-900">Gender:</strong> {{caracter.gender | titlecase}}</p>
+                        <p class="truncate"><strong class="text-purple-900">Location:</strong> {{caracter.location.name | titlecase}}</p>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+
+    
+    <ng-container *ngIf="caracters.length === 0 && !isLoading">
+        <div class="flex  shadow flex-col items-center sm:flex-row items-center justify-center bg-white text-2xl border-2 border-gray-200 p-4 rounded-2xl">
+            <mat-icon class="mr-2 text-purple-900">
+                notification_important
+            </mat-icon>
+            <div class="text-center">You have not selected any character!</div>
+        </div>
+    </ng-container>
+
+   
+    
+    <ng-template #loadingState>
+        <div class="flex flex-row justify-center pt-4 sm:pt-24">
+            <mat-spinner ></mat-spinner>
+        </div>
+    </ng-template>
+
+
+</div>
+    

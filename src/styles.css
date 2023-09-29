@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.custom-scrollbar::-webkit-scrollbar {
+    @apply w-1.5;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-purple-300 rounded-md border-gray-100 hover:bg-purple-500;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

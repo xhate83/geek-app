@@ -1,0 +1,12 @@
+<div class="flex h-screen max-h-screen overflow-y-auto flex-col sm:flex-row p-4 sm:p-8 bg-gray-300">
+    <div class="flex-none sm:overflow-y-hidden">
+        <app-navigation-bar></app-navigation-bar>
+    </div>
+    
+    <div class="flex-grow p-4 sm:px-8 sm:py-6 bg-gray-100 rounded-b-2xl sm:rounded-l-none sm:rounded-r-2xl sm:rounded-b-none shadow-lg">
+        <div class="h-2 relative">
+            <mat-progress-bar mode="indeterminate" *ngIf="isLoading$ | async" class="absolute top-0 left-0 w-full"></mat-progress-bar>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>
